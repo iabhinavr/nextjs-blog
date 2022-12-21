@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .post-content h2 {
+        @apply text-xl font-bold py-2 pl-4 mb-4;
+      }
+      .post-content h3 {
+        @apply text-xl mb-4;
+      }
+      .post-content pre {
+        @apply mb-4;
+      }
+      .post-content a {
+        @apply underline text-blue-400;
+      }
+      .post-content p {
+        @apply pb-4 tracking-tighter text-lg;
+      }
+      .post-content ul {
+        @apply pb-4 list-disc list-inside text-yellow-400;
+      }
+      .post-content ol {
+        @apply pb-4 list-decimal list-inside text-blue-400;
+      }
+      .post-content figure {
+        @apply pb-4;
+      }
+      .post-content figure figcaption {
+        @apply text-center py-2;
+      }
+}
