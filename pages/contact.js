@@ -1,5 +1,7 @@
 import Head from "next/head";
 import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
+
 export default function Contact() {
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -54,6 +56,7 @@ export default function Contact() {
             </div>
             
         </section>
+        <SiteFooter />
         </>
     );
 }

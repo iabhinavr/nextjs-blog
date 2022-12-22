@@ -1,5 +1,6 @@
 import Head from "next/head";
 import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 import { getPageSlugs, getSinglePage } from "../lib/pages";
 
 export default function Page({ pageData }) {
@@ -22,6 +23,7 @@ export default function Page({ pageData }) {
                 <div className="post-content container mx-auto lg:max-w-4xl" dangerouslySetInnerHTML={{ __html: pageData.content }} />
             </article>
         </section>
+        <SiteFooter />
         </>
     );
 }

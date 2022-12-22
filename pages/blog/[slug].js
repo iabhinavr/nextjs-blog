@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { getPostSlugs, getSinglePost } from "../../lib/posts";
 import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
 
 export default function Post({ postData, featuredImageUrl }) {
     return (
@@ -29,7 +30,7 @@ export default function Post({ postData, featuredImageUrl }) {
                 <div className="post-content container mx-auto lg:max-w-4xl" dangerouslySetInnerHTML={{ __html: postData.content }} />
             </section>
         </article>
-        
+        <SiteFooter />
         </>
     );
 }

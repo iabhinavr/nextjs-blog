@@ -4,6 +4,7 @@ import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import Image from "next/image";
 import FeaturedImage from "../../lib/FeaturedImage";
+import SiteFooter from "../../components/SiteFooter";
 
 export async function getStaticProps() {
     const allPosts = await getAllPosts();
@@ -66,6 +67,7 @@ export default function BlogHome({ allPosts }) {
                 </div>
             </section>
         </main>
+        <SiteFooter />
         </>
     );
 }

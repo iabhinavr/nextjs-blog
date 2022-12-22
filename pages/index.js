@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import SiteHeader from "../components/SiteHeader";
 import Link from "next/link";
 
@@ -10,13 +9,13 @@ export default function Home() {
                 <title>Welcome to CoolNomad Travel Blog</title>
                 <meta name="description" content="coolnomad travel blog - read our travel stories" key="metadescription" />
             </Head>
-            <div className="min-h-screen bg-[url('/home.jpg')] relative" >
+            <div className="h-screen bg-[url('/home.jpg')] relative" >
                 <div className="absolute bg-slate-900 inset-0 z-0 opacity-40"></div>
-                <div className="container lg:max-w-4xl mx-auto">
-                    <SiteHeader className="z-10 relative" />
+                <div className="absolute z-20 w-full">
+                    <SiteHeader className="container lg:max-w-4xl mx-auto" />
                 </div>
-                <main >
-                    <div className="min-h-[50vh] flex flex-col items-center justify-center z-10 relative">
+                <main className="h-full">
+                    <div className="h-full flex flex-col items-center justify-center z-10 relative">
                         <h1 className="text-6xl text-center text-slate-100">
                             Welcome to <span className="text-yellow-400">CoolNomad</span> Travel Blog
                         </h1>
