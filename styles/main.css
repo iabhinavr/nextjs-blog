@@ -30,4 +30,17 @@
       .post-content figure figcaption {
         @apply text-center py-2;
       }
+
+      .contact-form label {
+        @apply block w-full mb-4;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        @apply block border focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 w-full mb-4 p-4;
+      }
+
+      .contact-form button {
+        @apply inline-block bg-green-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 w-full mb-4 p-4 text-slate-100 text-2xl hover:bg-green-600 active:bg-green-700;
+      }
 }

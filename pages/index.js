@@ -12,14 +12,16 @@ export default function Home() {
             </Head>
             <div className="min-h-screen bg-[url('/home.jpg')] relative" >
                 <div className="absolute bg-slate-900 inset-0 z-0 opacity-40"></div>
-                <SiteHeader className="z-10 relative" />
+                <div className="container lg:max-w-4xl mx-auto">
+                    <SiteHeader className="z-10 relative" />
+                </div>
                 <main >
                     <div className="min-h-[50vh] flex flex-col items-center justify-center z-10 relative">
                         <h1 className="text-6xl text-center text-slate-100">
                             Welcome to <span className="text-yellow-400">CoolNomad</span> Travel Blog
                         </h1>
-                        <div className="mt-8">
-                            <Link href="/blog" className="text-3xl text-slate-800 bg-slate-100 border py-3 px-4 hover:bg-yellow-300 transition">Read Blog</Link>
+                        <div className="mt-20">
+                            <Link href="/blog" className="text-2xl text-slate-100 border-slate-100 border-2 rounded-md py-3 px-4 hover:bg-yellow-300 hover:text-slate-800 hover:border-yellow-300 transition">Read Blog</Link>
                         </div>
                     </div>
                 </main>
