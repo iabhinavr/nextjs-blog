@@ -1,15 +1,14 @@
 import Head from "next/head";
-import { getAllPosts } from "../../lib/posts";
+import { getPostList } from "../../lib/posts";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
-import Image from "next/image";
 import FeaturedImage from "../../lib/FeaturedImage";
 import SiteFooter from "../../components/SiteFooter";
 import LoadMore from "../../components/LoadMore";
 import { useState } from "react";
 
 export async function getStaticProps() {
-    const allPosts = await getAllPosts();
+    const allPosts = await getPostList();
     return {
         props: {
             allPosts,

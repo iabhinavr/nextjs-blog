@@ -1,4 +1,4 @@
-import { getMorePosts } from "../lib/posts";
+import { getPostList } from "../lib/posts";
 
 export default function LoadMore({ posts, onPostsChange, taxonomy = null }) {
 
@@ -14,7 +14,7 @@ export default function LoadMore({ posts, onPostsChange, taxonomy = null }) {
             nodes: []
         };
 
-        const morePosts = await getMorePosts(posts.pageInfo.endCursor, taxonomy);
+        const morePosts = await getPostList(posts.pageInfo.endCursor, taxonomy);
 
         newPosts.pageInfo = morePosts.pageInfo;
         posts.nodes.map((node) => {
