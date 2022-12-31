@@ -1,6 +1,7 @@
 import Head from "next/head";
 import SiteHeader from "../components/SiteHeader";
 import Link from "next/link";
+import homeStyles from "../styles/Home.module.css";
 
 export default function Home() {
     return (
@@ -9,6 +10,9 @@ export default function Home() {
                 <title>Welcome to CoolNomad Travel Blog</title>
                 <meta name="description" content="coolnomad travel blog - read our travel stories" key="metadescription" />
             </Head>
+            <div className={homeStyles.grid}>
+
+            </div>
             <div className="h-screen bg-[url('/home.jpg')] relative" >
                 <div className="absolute bg-slate-900 inset-0 z-0 opacity-40"></div>
                 <div className="absolute z-20 w-full">

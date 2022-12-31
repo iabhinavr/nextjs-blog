@@ -5,6 +5,8 @@ import SiteHeader from "../../components/SiteHeader";
 import Image from "next/image";
 import FeaturedImage from "../../lib/FeaturedImage";
 import SiteFooter from "../../components/SiteFooter";
+import LoadMore from "../../components/LoadMore";
+import { useState } from "react";
 
 export async function getStaticProps() {
     const allPosts = await getAllPosts();
@@ -16,6 +18,8 @@ export async function getStaticProps() {
 }
 
 export default function BlogHome({ allPosts }) {
+
+    const [posts, setPosts] = useState(allPosts);
     return (
         <>
         <Head>
@@ -40,7 +44,7 @@ export default function BlogHome({ allPosts }) {
                 <div className="container mx-auto lg:max-w-5xl">
                     <ul>
                         {
-                            allPosts.nodes.map((post) => (
+                            posts.nodes.map((post) => (
                                 <li key={post.slug} className="grid grid-cols-5 gap-4 mb-4">
                                     <div className="featured-image col-span-2">
                                         <FeaturedImage post={post} />
@@ -64,6 +68,13 @@ export default function BlogHome({ allPosts }) {
                             ))
                         }
                     </ul>
+                    <div className="py-4">
+                        <LoadMore
+                        posts={posts}
+                        onPostsChange={setPosts}
+                        taxonomy={null}
+                        />
+                    </div>
                 </div>
             </section>
         </main>
