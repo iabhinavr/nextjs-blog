@@ -2,6 +2,7 @@ import Head from "next/head";
 import { getPostSlugs, getSinglePost } from "../../lib/posts";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import Date from "../../components/Date";
 
 export default function Post({ postData, featuredImageUrl }) {
     return (
@@ -20,9 +21,14 @@ export default function Post({ postData, featuredImageUrl }) {
             <section className={`hero-area h-[60vh] min-h-[30rem] bg-no-repeat bg-cover bg-center relative`} style={{backgroundImage: featuredImageUrl }}>
                 <div className="container lg:max-w-4xl mx-auto h-full flex flex-col justify-center">
                     <div className="absolute bg-slate-900 inset-0 z-0 opacity-40"></div>
-                    <h1 className="text-6xl text-center text-slate-100 relative z-10 py-8 mt-12">
+                    <h1 className="text-6xl text-left text-slate-100 relative z-10 py-8 mt-12">
                         {postData.title}
                     </h1>
+                    <div className="pb-4 text-slate-100 z-10">
+                        <small>
+                            Posted by Abhinav, last updated on <Date dateString={postData.modified} />
+                        </small>
+                    </div>
                     <div className="relative z-10 text-left text-slate-200 text-2xl pl-4 border-l-4 border-lime-200 " dangerouslySetInnerHTML = {{ __html: postData.excerpt }}/>
                 </div>
             </section>

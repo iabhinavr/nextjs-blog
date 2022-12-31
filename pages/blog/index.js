@@ -5,6 +5,7 @@ import SiteHeader from "../../components/SiteHeader";
 import FeaturedImage from "../../lib/FeaturedImage";
 import SiteFooter from "../../components/SiteFooter";
 import LoadMore from "../../components/LoadMore";
+import Date from "../../components/Date";
 import { useState } from "react";
 
 export async function getStaticProps() {
@@ -50,6 +51,12 @@ export default function BlogHome({ allPosts }) {
                                     </div>
                                     <div className="col-span-3">
                                         <h2 className="py-4"><Link className="text-blue-400 text-2xl hover:text-blue-600" href={`/blog/${post.slug}`}>{post.title}</Link></h2>
+                                        <div className="mb-4">
+                                        <small>
+                                            Posted on <Date dateString={post.date} />
+                                        </small>
+                                        </div>
+                                        
                                         <div className="text-lg" dangerouslySetInnerHTML={{ __html: post.excerpt }}></div>
                                         <div className="py-4">
                                             Posted Under:&nbsp; 
