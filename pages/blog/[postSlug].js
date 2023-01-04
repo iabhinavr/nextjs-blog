@@ -42,7 +42,7 @@ export default function Post({ postData, featuredImageUrl }) {
 }
 
 export async function getStaticProps({ params }) {
-    const postData = await getSinglePost(params.slug);
+    const postData = await getSinglePost(params.postSlug);
     console.log(postData);
 
     return {
@@ -62,7 +62,7 @@ export async function getStaticPaths() {
         paths: slugs.map((slug) => (
         {
             params: {
-                slug: `${slug.slug}`
+                postSlug: `${slug.slug}`
             }
         }
         )),

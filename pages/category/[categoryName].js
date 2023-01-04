@@ -8,8 +8,8 @@ import FeaturedImage from "../../lib/FeaturedImage";
 import { useState } from "react";
 
 export async function getStaticProps({ params }) {
-    const allPosts = await getPostList(null, {key: "categoryName", value: params.slug});
-    const categoryDetails = await getCategoryDetails(params.slug);
+    const allPosts = await getPostList(null, {key: "categoryName", value: params.categoryName});
+    const categoryDetails = await getCategoryDetails(params.categoryName);
 
     return {
         props: {

@@ -29,7 +29,7 @@ export default function Page({ pageData }) {
 }
 
 export async function getStaticProps({ params }) {
-    const pageData = await getSinglePage(params.slug);
+    const pageData = await getSinglePage(params.pageSlug);
 
     return {
         props: {
@@ -47,7 +47,7 @@ export async function getStaticPaths() {
         paths: slugs.map((slug) => (
         {
             params: {
-                slug: `${slug.slug}`
+                pageSlug: `${slug.slug}`
             }
         }
         )),
