@@ -1,47 +1,55 @@
 import { getPostList } from "../lib/posts";
+import { useState } from "react";
 
-export default function LoadMore({ posts, onPostsChange, taxonomy = null }) {
+export default function LoadMore({posts, setPosts, taxonomy = null}) {
+
+    let bT = posts.pageInfo.hasNextPage ? 'Load more posts' : 'No more posts to load';
+    let bD = posts.pageInfo.hasNextPage ? false : true;
+
+    const [buttonText, setButtonText] = useState(bT);
+    const [buttonDisabled, setButtonDisabled] = useState(bD);
 
     const handleOnclick = async (event) => {
-        let clickedBtn = event.target;
-        clickedBtn.innerHTML = 'Loading more posts...';
-        clickedBtn.disabled = true;
 
-        let newPosts = {
+        setButtonText('Loading...');
+        setButtonDisabled(true);
+
+        const morePosts = await getPostList(posts.pageInfo.endCursor, taxonomy);
+
+        let updatedPosts = {
             pageInfo: {
 
             },
             nodes: []
-        };
+        }
 
-        const morePosts = await getPostList(posts.pageInfo.endCursor, taxonomy);
+        updatedPosts.pageInfo = morePosts.pageInfo;
 
-        newPosts.pageInfo = morePosts.pageInfo;
         posts.nodes.map((node) => {
-            newPosts.nodes.push(node);
+            updatedPosts.nodes.push(node);
         });
+
         morePosts.nodes.map((node) => {
-            newPosts.nodes.push(node);
+            updatedPosts.nodes.push(node);
         });
-        onPostsChange(newPosts);
+
+        setPosts(updatedPosts);
 
         if(morePosts.pageInfo.hasNextPage) {
-            clickedBtn.disabled = false;
-            clickedBtn.innerHTML = 'Load more posts';
+            setButtonText('Load more posts');
+            setButtonDisabled(false);
         }
         else {
-            clickedBtn.disabled = true;
-            clickedBtn.innerHTML = 'No more posts to load';
+            setButtonText('No more posts to load');
+            setButtonDisabled(true);
         }
-    };
-
+    }
     return (
-        <button
-        className="load-more font-bold block mx-auto px-4 py-2 rounded text-slate-900 bg-blue-400 disabled:opacity-75"
+        <button 
+        className="load-more font-bold bg-blue-400 text-slate-900 px-4 py-2 hover:bg-blue-500"
         onClick={handleOnclick}
-        disabled={posts.pageInfo.hasNextPage ? false : true}
-        >
-            {posts.pageInfo.hasNextPage ? 'Load more posts' : 'No more posts to load'}
+        disabled={buttonDisabled}>
+            {buttonText}
         </button>
-    )
+    );
 }

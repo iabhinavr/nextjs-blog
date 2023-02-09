@@ -3,44 +3,42 @@
 @tailwind utilities;
 
 @layer utilities {
-    .post-content h2 {
-        @apply text-xl font-bold py-2 pl-4 mb-4;
-      }
-      .post-content h3 {
-        @apply text-xl mb-4;
-      }
-      .post-content pre {
-        @apply mb-4;
-      }
-      .post-content a {
-        @apply underline text-blue-400;
-      }
-      .post-content p {
-        @apply pb-4 tracking-tighter text-lg;
-      }
-      .post-content ul {
-        @apply pb-4 list-disc list-inside text-yellow-400;
-      }
-      .post-content ol {
-        @apply pb-4 list-decimal list-inside text-blue-400;
-      }
-      .post-content figure {
+    .post-content p {
+        @apply pb-4 text-lg;
+    }
+    .post-content a {
+        @apply underline text-blue-400 hover:text-blue-600;
+    }
+
+    .post-content ul {
+        @apply pb-4 list-disc list-inside text-yellow-600 text-lg;
+    }
+
+    .post-content figure {
         @apply pb-4;
-      }
-      .post-content figure figcaption {
+    }
+
+    .post-content figure figcaption {
         @apply text-center py-2;
-      }
+    }
 
-      .contact-form label {
+    .post-content h2 {
+        @apply text-2xl font-bold py-4;
+    }
+    .post-content h3 {
+        @apply text-xl font-bold py-4;
+    }
+
+    .contact-form label {
         @apply block w-full mb-4;
-      }
+    }
 
-      .contact-form input,
-      .contact-form textarea {
-        @apply block border focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 w-full mb-4 p-4;
-      }
+    .contact-form input,
+    .contact-form textarea {
+        @apply block border focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 w-full mb-4 p-2 rounded;
+    }
 
-      .contact-form button {
-        @apply inline-block bg-green-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 w-full mb-4 p-4 text-slate-100 text-2xl hover:bg-green-600 active:bg-green-700;
-      }
+    .contact-form button {
+        @apply inline-block bg-green-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 mb-4 px-3 py-2 text-slate-100 text-xl hover:bg-green-600 active:bg-green-700 rounded;
+    }
 }
