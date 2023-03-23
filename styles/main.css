@@ -41,4 +41,17 @@
     .contact-form button {
         @apply inline-block bg-green-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 mb-4 px-3 py-2 text-slate-100 text-xl hover:bg-green-600 active:bg-green-700 rounded;
     }
+
+    .comment-form label {
+        @apply block w-full mb-4;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+        @apply block border focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 w-full mb-4 p-2 rounded;
+    }
+
+    .comment-form button {
+        @apply inline-block bg-green-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2 focus:ring-opacity-50 mb-4 px-3 py-2 text-slate-100 text-xl hover:bg-green-600 active:bg-green-700 rounded;
+    }
 }

@@ -1,11 +1,15 @@
 import Head from "next/head";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import CommentForm from "../../components/CommentForm";
 import { getPostSlugs, getSinglePost } from "../../lib/posts";
+import { getComments } from "../../lib/comments";
 import Date from "../../components/Date";
+import { comment } from "postcss";
 
 export async function getStaticProps({ params }) {
     const postData = await getSinglePost(params.postSlug);
+    const {comments, commentCount} = await getComments(params.postSlug);
 
     let featuredImageUrl = "https://wp.abhinavr.com/wp-content/uploads/2022/12/travel_icy-polar_022K.jpg";
 
@@ -13,11 +17,20 @@ export async function getStaticProps({ params }) {
         featuredImageUrl = postData.featuredImage.node.mediaDetails.sizes[0].sourceUrl;
     }
 
+    if(!postData) {
+        return {
+            notFound: true
+        };
+    }
+
     return {
         props: {
             postData,
             featuredImageUrl: "url(" + featuredImageUrl + ")",
-        }
+            comments,
+            commentCount,
+        },
+        notFound: false,
     };
 }
 
@@ -32,11 +45,12 @@ export async function getStaticPaths() {
                 }
             }
         )),
-        fallback: false 
+        fallback: 'blocking'
     }
 }
 
-export default function Post({ postData, featuredImageUrl }) {
+export default function Post({ postData, featuredImageUrl, comments, commentCount }) {
+    console.log(comments);
     return (
         <>
         <Head>
@@ -64,6 +78,42 @@ export default function Post({ postData, featuredImageUrl }) {
                 <div dangerouslySetInnerHTML={{ __html: postData.content }} className="post-content container lg:max-w-4xl mx-auto"/>
             </section>
         </article>
+        <div className="container mx-auto lg:max-w-4xl">
+            <h3 className="text-xl py-2 my-4 border-l-4 border-l-lime-300 pl-4">{commentCount ? commentCount : 'No'} comments on this post so far:</h3>
+            <CommentForm postId={postData.databaseId} />
+        </div>
+
+        <div className="container mx-auto lg:max-w-4xl">
+
+            <section>
+                <ul>
+                    {
+                        comments.nodes.map((comment) => (
+                            <li key={comment.id} className="pb-4 border-b">
+                                <div className="comment-header flex justify-start items-center">
+                                    <div className="py-4">
+                                        <img src={comment.author.node.avatar.url} width={comment.author.node.avatar.width} height={comment.author.node.avatar.height} className="rounded-full max-w-[50px] mr-4" />
+                                    </div>
+                                    <div>
+                                        <div className="font-bold">
+                                            {comment.author.node.name}
+                                        </div>
+                                        <div className="text-sm">
+                                            <Date dateString={comment.date} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="comment-body pl-[66px]">
+                                    <div dangerouslySetInnerHTML={{ __html: comment.content}}></div>
+                                </div>
+                            </li>
+                        ))
+                    }
+                </ul>
+                
+            </section>
+        </div>
+        
         <SiteFooter />
         </>
     );
