@@ -61,16 +61,11 @@ export default function CommentForm({postId}) {
         </form>
 
         {
-            submitStatus ? <SubmissionAlert message={responseMessage} alertColor={alertColor} /> : null
+            submitStatus && 
+            <div className={`${alertColor} py-2 px-4 mt-4 text-slate-100 rounded-md`}>
+                {responseMessage}
+            </div>
         }
         </>
-    )
-}
-
-const SubmissionAlert = ({message, alertColor}) => {
-    return (
-        <div className={`${alertColor} py-2 px-4 mt-4 text-slate-100 rounded-md`}>
-            {message}
-        </div>
     )
 }
