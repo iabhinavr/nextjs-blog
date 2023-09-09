@@ -5,7 +5,7 @@ import CommentForm from "../../components/CommentForm";
 import { getPostSlugs, getSinglePost } from "../../lib/posts";
 import { getComments } from "../../lib/comments";
 import Date from "../../components/Date";
-import { Rubik, Roboto_Slab } from '@next/font/google';
+import { Rubik, Roboto_Slab } from 'next/font/google';
 import { getSeo } from "../../lib/seo";
 
 const rubik = Rubik({ subsets: ['latin'], display: 'swap' });
