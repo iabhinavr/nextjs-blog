@@ -2,6 +2,8 @@
 
 This repo was created for a video series published on YouTube on how to create a headless WordPress site using Next.js as the frontend.
 
+**If you are looking for doing this project with the latest Next.js app router, check out this repo instead: [nextjs-blog-approuter](https://github.com/iabhinavr/nextjs-blog-approuter)**
+
 Playlist: https://www.youtube.com/playlist?list=PLpvmpNjU5ooWkh1xAldsikmTxgoo5gc2v
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
